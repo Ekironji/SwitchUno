@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageMeteo"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/def_parzialmente_nuvoloso" 
+        android:clickable="false"/>
+
+<!-- 	<ImageView -->
+<!--         android:id="@+id/imageMeteoDynamic" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="match_parent" -->
+<!--         android:src="@drawable/clouds"  -->
+<!--         android:scaleType="fitXY" -->
+<!--         android:clickable="false"/> -->
+
+    <TextView
+        android:id="@+id/textGrades"
+        style="@style/OverlayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp"
+        android:text="@string/dummy_grades"
+        android:textSize="70sp" />
+
+    <TextView
+        android:id="@+id/textWeatherState"
+        style="@style/OverlayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageWeatherState"
+        android:layout_marginLeft="11dp"
+        android:layout_toRightOf="@+id/imageWeatherState"
+        android:text="@string/dummy_weather_state"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/textCity"
+        style="@style/OverlayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"        
+        android:layout_marginLeft="15dp"
+        android:text="@string/dummy_city"
+        android:textSize="40sp" />
+
+    <ImageView
+        android:id="@+id/imageWeatherState"
+        android:layout_width="50dip"
+        android:layout_height="50dip"
+        android:layout_above="@+id/textGrades"
+        android:layout_alignLeft="@+id/textGrades"
+        android:src="@drawable/quasi_sereno_poco_nuvoloso" />
+
+    <TextView
+        android:id="@+id/textTime"
+        style="@style/OverlayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textWeatherState"
+        android:layout_alignLeft="@+id/imageWeatherState"
+        android:text="@string/dummy_time"
+        android:textSize="200sp" />
+
+    <TextView
+        android:id="@+id/textDate"
+        style="@style/OverlayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textCity"
+        android:layout_alignLeft="@+id/textTime"
+        android:text="@string/dummy_date"
+        android:textSize="25sp" />
+
+</RelativeLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="activity_sample_code">API Demos</string>
+    
+    <string name="app_name">SwitchUno</string>
+    <string name="menu_settings">Settings</string>
+
+    <!-- =============================== -->
+    <!--  app/activity examples strings  -->
+    <!-- =============================== -->
+
+    <string name="styled_12_hour_clock">MM/<font fgcolor="#ffff0000"><b>dd</b></font>/yy h<font fgcolor="#ffff0000"><sup><small>mm</small></sup></font><b>aa</b></string>
+    <string name="styled_24_hour_clock">MM/<font fgcolor="#ffff0000"><b>dd</b></font>/yy k<font fgcolor="#ffff0000"><sup><small>mm</small></sup></font></string>
+
+    <string name="tabs_1_tab_1">tab1</string>
+    <string name="tabs_1_tab_2">tab2</string>
+    <string name="tabs_1_tab_3">tab3</string>
+    
+    <string name="pref_send_report">Send crash reports</string>
+    <string name="pref_send_report_summary">Helps to fix bugs</string>
+    <string name="pref_sync_frequency">Sync frequency</string>
+    <string name="pref_sync_frequency_summary">Set the sync frequency</string>
+    <string name="pref_user_name">Set username</string>
+    <string name="pref_user_name_summary">Set your username</string>
+      
+    <string name="pref_user_profile">User Profile</string>
+    <string name="pref_update_setting">Update Settings</string>
+    
+    <!-- =============================== -->
+    <!--  dummy meteo fragment strings   -->
+    <!-- =============================== -->
+
+	<string name="dummy_city">Arezzo</string>
+	<string name="dummy_time">12:30</string>
+	<string name="dummy_date">08/07/2014</string>
+	<string name="dummy_weather_state">Parzialmente nuvoloso</string>
+	<string name="dummy_grades">27°</string>
+	
+	<!-- ===================================== -->
+    <!--  dummy mediaplayer fragment strings   -->
+    <!-- ===================================== -->
+    
+    <string name="dummy_album">Turn Blue - The Black Keys</string>
+
+  </resources>
