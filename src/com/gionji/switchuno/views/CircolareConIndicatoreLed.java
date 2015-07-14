@@ -113,12 +113,10 @@ public class CircolareConIndicatoreLed extends View{
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		
 
 		textpaint.setColor(Color.WHITE); 
 		textpaint.setTextSize(20);
 
-		
 		larg = getWidth();
 		alt = larg;
 				
@@ -189,7 +187,7 @@ public class CircolareConIndicatoreLed extends View{
 			}
 			coloreCerchioInterno = selectedLedColor;
 			trattoCerchioInterno.setColor(coloreCerchioInterno);
-    		SwitchMainActivity.mAdkManager.writeByteArray(
+    		/*SwitchMainActivity.mAdkManager.writeByteArray(
     				GionjiUtils.createPackage(
     					CircolareConIndicatoreLed.BULB,											// 1 = LAMP; 2 = ABAJOUR; 3 = BULB
     					interruttoreAcceso ? 
@@ -197,7 +195,7 @@ public class CircolareConIndicatoreLed extends View{
     					Color.red(selectedLedColor), 											// red
     					Color.green(selectedLedColor), 											// green
     					Color.blue(selectedLedColor))											// blue
-    		);
+    		);*/
 			canvas.drawArc(areaCerchioInterno, 0, 	360, false, trattoCerchioInterno);
 		}
 		else if(animationIndex == ANIMATION_LONG_END){
@@ -207,9 +205,7 @@ public class CircolareConIndicatoreLed extends View{
 			canvas.drawArc(areaIndicatore,   -90, angle, false, trattoCerchioEsterno);
 			canvas.drawArc(areaCerchioInterno, 0, 	360, false, trattoCerchioInterno);
 		}
-		
-		
-					
+
 	}
 	
 	
@@ -305,7 +301,7 @@ public class CircolareConIndicatoreLed extends View{
 			//SPENGI ACCENDI
 			interruttoreAcceso = !interruttoreAcceso;
 			
-			SwitchMainActivity.mAdkManager.writeByteArray(
+			/*SwitchMainActivity.mAdkManager.writeByteArray(
     				GionjiUtils.createPackage(
     					CircolareConIndicatoreLed.BULB,											// 1 = LAMP; 2 = ABAJOUR; 3 = BULB
     					interruttoreAcceso ? 
@@ -313,7 +309,7 @@ public class CircolareConIndicatoreLed extends View{
     					Color.red(selectedLedColor), 											// red
     					Color.green(selectedLedColor), 											// green
     					Color.blue(selectedLedColor))											// blue
-    		);
+    		);*/
 			
 			for (int j = 0; j < 255; j+=4) {
 				coloreCerchioInterno = Color.rgb(j, 255, 255);
@@ -411,7 +407,7 @@ public class CircolareConIndicatoreLed extends View{
 				}
 			}
 			
-			SwitchMainActivity.mAdkManager.writeByteArray(
+			/*SwitchMainActivity.mAdkManager.writeByteArray(
     				GionjiUtils.createPackage(
     					CircolareConIndicatoreLed.BULB,											// 1 = LAMP; 2 = ABAJOUR; 3 = BULB
     					interruttoreAcceso ? 
@@ -419,7 +415,7 @@ public class CircolareConIndicatoreLed extends View{
     					Color.red(selectedLedColor), 											// red
     					Color.green(selectedLedColor), 											// green
     					Color.blue(selectedLedColor))											// blue
-    		);
+    		);*/
 			
 			for (int j = 255; j >= 0; j-=1) {
 				coloreCerchioInterno = Color.rgb(j, j, j);

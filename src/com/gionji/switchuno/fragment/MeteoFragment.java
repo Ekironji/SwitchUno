@@ -14,6 +14,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
 import android.app.Fragment;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +25,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.gionji.switchuno.R;
 import com.gionji.switchuno.SwitchMainActivity;
@@ -41,6 +44,7 @@ public class MeteoFragment extends Fragment {
 	private ImageView weatherStateImg;
 	private TextView weatherStateTxt;
 	private TextView gradesTxt;
+	private VideoView mVideoView;
 	
 	private DatiMeteo datiMeteo;
 	
@@ -69,11 +73,23 @@ public class MeteoFragment extends Fragment {
         String date = dateFormat.format(new Date());
         dateTxt.setText(date);
         
-        if (GionjiUtils.isNetworkAvailable(getActivity())) {
+  /*      if (GionjiUtils.isNetworkAvailable(getActivity())) {
 			new DownloadXmlTask().execute("arezzo");
 		} else {
 			Toast.makeText(getActivity().getApplicationContext(), "No internet connection ", Toast.LENGTH_SHORT).show();
 		}
+
+		mVideoView = (VideoView) rootView.findViewById(R.id.videoView);
+		String path = "android.resource://" + getActivity().getApplicationContext().getPackageName() + "/" + R.raw.weather_windy_day;
+		mVideoView.setVideoURI(Uri.parse(path));
+		mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+			@Override
+			public void onPrepared(MediaPlayer mp) {
+				mp.setLooping(true);
+			}
+		});
+		mVideoView.start();*/
+
 		return rootView;
 	}
 	

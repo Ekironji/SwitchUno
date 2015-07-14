@@ -19,6 +19,15 @@
 <!--         android:scaleType="fitXY" -->
 <!--         android:clickable="false"/> -->
 
+<!--    <VideoView
+        android:id="@+id/videoView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />-->
+
     <TextView
         android:id="@+id/textGrades"
         style="@style/OverlayText"
@@ -65,19 +74,21 @@
         style="@style/OverlayText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textWeatherState"
-        android:layout_alignLeft="@+id/imageWeatherState"
         android:text="@string/dummy_time"
-        android:textSize="200sp" />
+        android:textSize="60sp"
+        android:layout_alignBottom="@+id/textDate"
+        android:layout_alignRight="@+id/textWeatherState"
+        android:layout_alignEnd="@+id/textWeatherState" />
 
     <TextView
         android:id="@+id/textDate"
         style="@style/OverlayText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textCity"
-        android:layout_alignLeft="@+id/textTime"
         android:text="@string/dummy_date"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:layout_below="@+id/textCity"
+        android:layout_alignLeft="@+id/textCity"
+        android:layout_alignStart="@+id/textCity" />
 
 </RelativeLayout>

@@ -2,16 +2,22 @@ package com.gionji.switchuno.utils;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.IOException;
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Environment;
 import android.util.Log;
+
+import com.gionji.switchuno.serialport.SerialPort;
+import com.gionji.switchuno.serialport.SerialPortFinder;
 
 public class GionjiUtils {
 
@@ -139,14 +145,7 @@ public class GionjiUtils {
 		// return current duration in milliseconds
 		return currentDuration * 1000;
 	}
-	
-	
-	/**
-	 * Function to change progress to timer
-	 * @param progress - 
-	 * @param totalDuration
-	 * returns current duration in milliseconds
-	 * */
+
 	public static float map(float x, float fromMin, float fromMax, float toMin, float toMax) {
 		
 		float res = (((toMax - toMin)*(x - fromMin)) / (fromMax - fromMin)) + toMin;
@@ -171,5 +170,36 @@ public class GionjiUtils {
 	     }
 	     return false;
 	  }
-	
+
+    public SerialPortFinder mSerialPortFinder = new SerialPortFinder();
+    private static  SerialPort mSerialPort = null;
+
+    public static SerialPort getSerialPort() throws SecurityException, IOException, InvalidParameterException {
+        if (mSerialPort == null) {
+                        /* Read serial port parameters */
+            /*SharedPreferences sp = getSharedPreferences("android_serialport_api.sample_preferences", MODE_PRIVATE);
+            String path = sp.getString("DEVICE", "");
+            int baudrate = Integer.decode(sp.getString("BAUDRATE", "-1"));
+
+                        // Check parameters
+            if ( (path.length() == 0) || (baudrate == -1)) {
+                throw new InvalidParameterException();
+            }*/
+
+                        /* Open the serial port */
+            mSerialPort = new SerialPort(new File("/dev/ttyO4"), 9600, 0);
+        }
+        return mSerialPort;
+    }
+
+    public static void closeSerialPort() {
+        if (mSerialPort != null) {
+            mSerialPort.close();
+            mSerialPort = null;
+        }
+    }
+
+
+
+
 }

@@ -1,7 +1,5 @@
 package com.gionji.switchuno;
 
-import org.udoo.adktoolkit.AdkManager;
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -11,23 +9,30 @@ import android.hardware.usb.UsbManager;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 
+import com.gionji.switchuno.fragment.CitofonoFragment;
 import com.gionji.switchuno.fragment.MediaPlayerFragment;
 import com.gionji.switchuno.fragment.MeteoFragment;
 import com.gionji.switchuno.fragment.SwitchFragment;
+import com.gionji.switchuno.serialport.IndoleSerialProtocol;
+import com.gionji.switchuno.serialport.SerialPort;
+import com.gionji.switchuno.utils.GionjiUtils;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 
 public class SwitchMainActivity extends Activity {
-	
-	public static AdkManager mAdkManager;
 	
 	static ProgressDialog dialog;
 	
 	/**
      * The number of pages (wizard steps) to show in this demo.
      */
-    private static final int NUM_PAGES = 3;
+    private static final int NUM_PAGES = 4;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -39,45 +44,47 @@ public class SwitchMainActivity extends Activity {
      * The pager adapter, which provides the pages to the view pager widget.
      */
     private ScreenSlidePagerAdapter mPagerAdapter;
+
+    SerialPort mSerialPort = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_activity);
-		
-		mAdkManager = new AdkManager((UsbManager) getSystemService(Context.USB_SERVICE));
-
 		dialog = new ProgressDialog(this);
-		
-//		register a BroadcastReceiver to catch UsbManager.ACTION_USB_ACCESSORY_DETACHED action
-		registerReceiver(mAdkManager.getUsbReceiver(), mAdkManager.getDetachedFilter());
-		
 		// Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setPageTransformer(true, new ZoomOutPageTransformer());
         mPagerAdapter = new ScreenSlidePagerAdapter(getFragmentManager());
         mPager.setAdapter(mPagerAdapter);
-        
+        mPager.setOffscreenPageLimit(3);
         mPager.setCurrentItem(1);
 
+        try {
+            SerialPort mSerialPort = GionjiUtils.getSerialPort();
+            IndoleSerialProtocol mIndoleSerialProtocol = new IndoleSerialProtocol(getApplicationContext(), mSerialPort);
+        } catch (IOException e) {
+            Log.e("Serial Exception", "open port error");
+            e.printStackTrace();
+        }
 	}
+
 	
 	@Override
 	public void onResume() {
 		super.onResume(); 
-		mAdkManager.open();
 	}
  
 	@Override
 	public void onPause() {
 		super.onPause();
-		mAdkManager.close();
 	}
 	
 	@Override
     protected void onDestroy() {
+        GionjiUtils.closeSerialPort();
+        mSerialPort = null;
         super.onDestroy();
-        unregisterReceiver(mAdkManager.getUsbReceiver());
     }
 	
 	public static void showProgressDialog(){
@@ -115,6 +122,9 @@ public class SwitchMainActivity extends Activity {
         	case 2:
         		returnFragment = new MediaPlayerFragment();
         		break;
+            case 3:
+                returnFragment = new CitofonoFragment();
+                break;
     		default:
     			break;
         	
