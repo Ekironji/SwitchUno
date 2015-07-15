@@ -29,7 +29,8 @@ public class IndoleSerialProtocol {
         Uart1 (/dev/ttyO4), 9600, N, 8, 1
      */
 
-    private byte STX = 0x02;
+    private byte STX                    = 0x02;
+
     private byte CMD_FIRMWARE           = 0x00;
     private byte CMD_FRESET             = 0x01;
     private byte CMD_SWITCHLED          = 0x02;
@@ -37,6 +38,7 @@ public class IndoleSerialProtocol {
     private byte CMD_GETPROXANDLIGHT    = 0x04;
     private byte CMD_ENABLELED          = 0x05;
     private byte CMD_ENABLEPRESNOT      = 0x06;
+
     private byte LEN;
     private byte DATI0, DATI1, DATI2;
     private byte CRC;

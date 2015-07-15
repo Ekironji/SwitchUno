@@ -60,13 +60,13 @@ public class SwitchMainActivity extends Activity {
         mPager.setOffscreenPageLimit(3);
         mPager.setCurrentItem(1);
 
-        try {
-            SerialPort mSerialPort = GionjiUtils.getSerialPort();
-            IndoleSerialProtocol mIndoleSerialProtocol = new IndoleSerialProtocol(getApplicationContext(), mSerialPort);
-        } catch (IOException e) {
-            Log.e("Serial Exception", "open port error");
-            e.printStackTrace();
-        }
+//        try {
+//            SerialPort mSerialPort = GionjiUtils.getSerialPort();
+//            IndoleSerialProtocol mIndoleSerialProtocol = new IndoleSerialProtocol(getApplicationContext(), mSerialPort);
+//        } catch (IOException e) {
+//            Log.e("Serial Exception", "open port error");
+//            e.printStackTrace();
+//        }
 	}
 
 	
@@ -82,8 +82,8 @@ public class SwitchMainActivity extends Activity {
 	
 	@Override
     protected void onDestroy() {
-        GionjiUtils.closeSerialPort();
-        mSerialPort = null;
+//        GionjiUtils.closeSerialPort();
+//        mSerialPort = null;
         super.onDestroy();
     }
 	

@@ -19,13 +19,13 @@ public class RelaysManager {
     final public static String OFF = "0";
 
     public RelaysManager(){
-        try {
+        /*try {
             Process process = Runtime.getRuntime().exec("echo out > /sys/class/gpio7/direction");
             Process process1 = Runtime.getRuntime().exec("echo out > /sys/class/gpio85/direction");
             Process process2 = Runtime.getRuntime().exec("echo out > /sys/class/gpio41/direction");
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public void switchRelay(String relay, String status) {
